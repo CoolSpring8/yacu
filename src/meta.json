@@ -1,5 +1,5 @@
 {
-  "name": "yacu: Yet another CC98 userscript.",
+  "name": "yacu - Yet another CC98 userscript",
   "namespace": "https://github.com/CoolSpring8/",
   "match": [
     "*://www.cc98.org/*",

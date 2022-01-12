@@ -17,7 +17,7 @@ export class BlockUserTopic {
 
     this.getBlockedUsers().then(() => {
       addAfterResponseHooks({
-        url: newTopics,
+        url: [newTopics],
         process: (topics) =>
           (topics as ITopic[]).filter(
             (topic) =>
@@ -25,7 +25,7 @@ export class BlockUserTopic {
           ),
       });
       addAfterResponseHooks({
-        url: topicPosts,
+        url: [topicPosts],
         process: (posts) =>
           (posts as IPost[]).filter(
             (post) =>
