@@ -1,7 +1,10 @@
 {
-  "name": "CC98 Evolved",
-  "namespace": "https://github.com/CoolSpring8/CC98-Evolved",
-  "match": "*://www.cc98.org/*",
+  "name": "yacu: Yet another CC98 userscript.",
+  "namespace": "https://github.com/CoolSpring8/",
+  "match": [
+    "*://www.cc98.org/*",
+    "*://www-cc98-org-s.webvpn.zju.edu.cn:8001/*"
+  ],
   "run-at": "document-idle",
   "grant": "none"
 }

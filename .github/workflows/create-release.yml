@@ -33,6 +33,6 @@ jobs:
 
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "dist/cc98-evolved.userscript.js"
+          artifacts: "dist/yacu.userscript.js"
           generateReleaseNotes: true
           token: ${{ secrets.GITHUB_TOKEN }}

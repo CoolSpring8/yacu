@@ -16,7 +16,7 @@ export default (async () =>
   defineConfig({
     input: "src/main.ts",
     output: {
-      file: "dist/cc98-evolved.userscript.js",
+      file: "dist/yacu.userscript.js",
       /**
        * 不要在 main.ts 里导出
        * 这样设置只是因为没有必要创建 IIFE
