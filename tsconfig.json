@@ -1,0 +1,16 @@
+// https://github.com/tsconfig/bases/blob/main/bases/recommended.json
+// https://github.com/tsconfig/bases/blob/main/bases/svelte.json
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "error",
+    "preserveValueImports": true,
+    "isolatedModules": true
+  }
+}

@@ -1,0 +1,9 @@
+# Dependency directories
+node_modules/
+
+# Build / generate output
+dist/
+
+coverage/
+
+.eslintcache
