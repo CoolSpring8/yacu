@@ -1,7 +1,8 @@
 import { isDebug } from "../config";
 
 export type BeforeRequest = (
-  request: Request
+  request: Request,
+  options: RequestInit
 ) => Request | Response | void | Promise<Request | Response | void>;
 
 export type AfterResponse = (
@@ -25,7 +26,7 @@ export function patchFetch(hooks: {
       let request = new Request(input, init);
 
       for (const preProcess of hooks.beforeRequest) {
-        const temporary = await preProcess(request);
+        const temporary = await preProcess(request, init);
 
         // beforeRequest 直接返回响应
         if (temporary instanceof Response) {
@@ -40,11 +41,9 @@ export function patchFetch(hooks: {
       }
 
       // Response
-      let response: Response = await Reflect.apply(
-        target,
-        thisArgument,
-        arguments_
-      );
+      let response: Response = await Reflect.apply(target, thisArgument, [
+        request,
+      ]);
 
       for (const postProcess of hooks.afterResponse) {
         const temporary = await postProcess(request, response.clone());
@@ -71,12 +70,32 @@ export function activateFetchInterceptor() {
   });
 }
 
+export function addBeforeRequestHooks(hook: {
+  url: RegExp[];
+  process: (content: unknown) => unknown;
+}) {
+  beforeRequestHooks.push(async (request, options) => {
+    if (!hook.url.some((regex) => regex.test(request.url))) {
+      return;
+    }
+
+    let oldData;
+    if (options.body) {
+      oldData = JSON.parse(options.body as string); // caution: 此处默认请求体是 JSON 格式
+    }
+
+    const newData = hook.process(oldData);
+
+    return new Request(request, { body: JSON.stringify(newData) });
+  });
+}
+
 export function addAfterResponseHooks(hook: {
-  url: RegExp;
+  url: RegExp[];
   process: (content: unknown) => unknown;
 }) {
   afterResponseHooks.push(async (request, response) => {
-    if (!hook.url.test(request.url)) {
+    if (!hook.url.some((regex) => regex.test(request.url))) {
       return;
     }
 
