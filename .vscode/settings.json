@@ -1,6 +1,4 @@
 {
   "editor.formatOnSave": true,
-  "[svelte]": {
-    "editor.defaultFormatter": "svelte.svelte-vscode"
-  }
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }

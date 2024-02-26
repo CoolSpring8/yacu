@@ -1,14 +1,12 @@
 {
   "env": {
     "browser": true,
-    "es2021": true,
-    "node": true,
-    "jest": true
+    "es2023": true,
+    "node": true
   },
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:unicorn/recommended",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -16,12 +14,6 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "svelte3"],
-  "rules": {},
-  "overrides": [
-    {
-      "files": ["*.svelte"],
-      "processor": "svelte3/svelte3"
-    }
-  ]
+  "plugins": ["@typescript-eslint"],
+  "rules": {}
 }

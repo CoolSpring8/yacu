@@ -1,16 +1,8 @@
-// https://github.com/tsconfig/bases/blob/main/bases/recommended.json
-// https://github.com/tsconfig/bases/blob/main/bases/svelte.json
 {
+  "extends": "@tsconfig/node-lts/tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "importsNotUsedAsValues": "error",
-    "preserveValueImports": true,
-    "isolatedModules": true
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false
   }
 }
